@@ -41,4 +41,6 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:1rem;
 .score-message{text-align:center;font-size:1.25rem;opacity:.9;margin-bottom:1rem;}
 #high-score{font-size:.875rem;opacity:.7;text-align:center;}
 .card .meta{flex-grow:1;}
+.header-icon {height: 1.5rem;vertical-align: middle;margin-right: 0.5rem;}
+#title {display: flex;align-items: center;gap: 0.25rem;}
 @media (min-width:37.5rem){#deck{max-width:var(--content-max);height:80vh;max-height:40rem;}}
