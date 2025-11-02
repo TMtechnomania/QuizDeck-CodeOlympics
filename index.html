@@ -1,32 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Rapid-Fire Dev Quiz</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<header>
-			<div id="back">‹</div>
-			<div id="title">Nursery Coder</div>
-		</header>
-		<main>
-            <section id="landing" class="bg-grad">
-            <h2>Rapid-Fire Dev Quiz</h2>
-            <p class="lead">
-            Select a category to start. Answer 5 rapid-fire questions,
-            each with a 12-second timer.
-            </p>
-            <div class="options" style="margin-bottom: 1rem;">
-            <button class="option-btn" onclick="startQuiz(18)">Computers</button>
-            <button class="option-btn" onclick="startQuiz(31)">Anime & Manga</button>
-            <button class="option-btn" onclick="startQuiz(11)">Film</button>
-            <button class="option-btn" onclick="startQuiz(0)">Random</button>
-            </div>
-            </section>
-            <section id="deck"></section>
-            </main>
-		<script src="script.js"></script>
-	</body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>QuizDeck - Trivia Dash</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+<div id="back">‹</div>
+<div id="title">QuizDeck</div>
+</header>
+<main>
+<section id="name-screen" class="bg-grad">
+<h2>Welcome!</h2>
+<p class="lead">Please enter your name to play.</p>
+<input type="text" id="name-input" placeholder="Your Name" />
+<button class="btn" id="name-btn">Next</button>
+</section>
+<section id="mode-screen" class="bg-grad" style="display: none">
+<h2>Hi, <span id="player-name"></span>!</h2>
+<p class="lead">Choose your mode.</p>
+<div class="options">
+<button class="option-btn" onclick="selectMode('normal')">
+Normal (10 Qs, 30s, 50/50 Hint)
+</button>
+<button class="option-btn" onclick="selectMode('rapid')">
+Rapid-Fire (5 Qs, 12s, No Hint)
+</button>
+</div>
+</section>
+<section id="category-screen" class="bg-grad" style="display: none">
+<h2>Select Category</h2>
+<p class="lead">One final step.</p>
+<div class="options">
+<button class="option-btn" onclick="startQuiz(18)">Computers</button>
+<button class="option-btn" onclick="startQuiz(31)">Anime & Manga</button>
+<button class="option-btn" onclick="startQuiz(11)">Film</button>
+<button class="option-btn" onclick="startQuiz(0)">Random</button>
+</div>
+</section>
+<section id="fact-screen" class="bg-grad" style="display: none">
+<h2>💡 Fun Fact</h2>
+<div class="meta" id="fact-text" style="font-size: 1rem; margin: 1.5rem 0; flex-grow: 1;">
+Loading fact...
+</div>
+<div class="timer" id="fact-timer" style="margin-bottom: 1.5rem;">
+<div class="timer-slider" id="fact-timer-slider"></div>
+<div class="timer-text">3</div>
+</div>
+<button class="btn" id="fact-next-btn" style="display: none;" onclick="proceedToQuiz()">
+Next
+</button>
+</section>
+<section id="deck"></section>
+</main>
+<script src="script.js"></script>
+</body>
 </html>
