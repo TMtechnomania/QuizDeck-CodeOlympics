@@ -188,10 +188,10 @@ r.innerHTML = `<div id="close" onclick="resetGame()">×</div><h3>Your Score</h3>
 deck.append(r);
 }
 function preloadFunFact() {
-fetch("https://api.quotable.io/random?tags=technology,programming")
+fetch("https://programming-quotes-api.herokuapp.com/quotes/random")
 .then((res) => res.json())
 .then((data) => {
-funFactText = `"${data.content}"<br><br><em>- ${data.author}</em>`;
+funFactText = `"${data.en}"<br><br><em>- ${data.author}</em>`;
 })
 .catch(() => {});
 }
