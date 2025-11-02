@@ -23,8 +23,8 @@ gameMode = "",
 currentCat = 0,
 qCount = 5,
 qTime = 12,
-hintUsed = false,
-funFactText = "The first computer 'bug' was a literal moth found trapped in a relay of the Harvard Mark II computer.";
+hintUsed = false;
+const funFacts = ["The first computer 'bug' was a literal moth found trapped in a relay of the Harvard Mark II computer.","JavaScript was created in just 10 days by Brendan Eich at Netscape.","The first computer mouse was invented by Douglas Engelbart in 1964 and was made of wood.","The QWERTY keyboard layout was designed to slow typists down to prevent typewriter jams.","The average smartphone has more computing power than the Apollo 11 lunar module.","Google's original name was 'Backrub', based on its analysis of 'backlinks'.","The 'img' tag in HTML was first proposed in 1993 by Marc Andreessen."];
 function shuffle(a) {
 for (let j = a.length - 1; j > 0; j--) {
 const r = Math.floor(Math.random() * (j + 1));
@@ -81,7 +81,7 @@ async function startQuiz(cat = 0) {
 currentCat = cat;
 categoryScreen.style.display = "none";
 factScreen.style.display = "block";
-factText.innerHTML = funFactText;
+factText.innerHTML = funFacts[Math.floor(Math.random() * funFacts.length)];
 factTimer.style.display = "flex";
 factNextBtn.style.display = "none";
 set = [];
@@ -184,16 +184,8 @@ function appendScoreCard() {
 const r = document.createElement("div");
 r.className = "card";
 r.id = "scoreCard";
-r.innerHTML = `<div id="close" onclick="resetGame()">×</div><h3>Your Score</h3><div class="score-display"><span class="score-number" id="scoreNum"></span><span class="score-percent" id="scorePerc"></span><div class="score-message" id="scoreMsg"></div><div id="high-score"></div></div><button class="btn" onclick="resetGame()">Play Again</button>`;
+r.innerHTML = `<div id="close" onclick="resetGame()">×</div><h3>Your Score</h3><div class="score-display"><span class.="score-number" id="scoreNum"></span><span class="score-percent" id="scorePerc"></span><div class="score-message" id="scoreMsg"></div><div id="high-score"></div></div><button class="btn" onclick="resetGame()">Play Again</button>`;
 deck.append(r);
-}
-function preloadFunFact() {
-fetch("https://programming-quotes-api.herokuapp.com/quotes/random")
-.then((res) => res.json())
-.then((data) => {
-funFactText = `"${data.en}"<br><br><em>- ${data.author}</em>`;
-})
-.catch(() => {});
 }
 function dismissCard(el) {
 const card = el.closest(".card");
@@ -291,7 +283,6 @@ arrange();
 }, 300);
 }
 (function init() {
-preloadFunFact();
 const name = localStorage.getItem("playerName");
 if (name) {
 playerName = name;
